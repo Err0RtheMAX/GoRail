@@ -5,6 +5,18 @@ var app = http.createServer(function(request,response){
     if(request.url == '/'){
       url = '/index.html';
     }
+    if(request.url == '/main') {
+        url = '/main.html';
+    }
+    if(request.url == '/places') {
+        url = '/places.html';
+    }
+    if(request.url == '/station') {
+        url = '/station.html';
+    }
+    
+
+
     if(request.url == '/favicon.ico'){
         response.writeHead(404);
         response.end();
