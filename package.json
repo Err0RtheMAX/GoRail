@@ -1,0 +1,26 @@
+{
+  "name": "trainportal",
+  "version": "1.0.0",
+  "description": "",
+  "main": "test.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ckdgus08/trainPortal.git"
+  },
+  "keywords": [
+    "1234"
+  ],
+  "author": "cch",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ckdgus08/trainPortal/issues"
+  },
+  "homepage": "https://github.com/ckdgus08/trainPortal#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-session": "^1.17.1"
+  }
+}
