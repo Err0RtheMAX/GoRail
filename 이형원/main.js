@@ -10,12 +10,37 @@ function templateHTML(title, list, body, control){
   <head>
     <title>WEB1 - ${title}</title>
     <meta charset="utf-8">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-525PG0WVQ1"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-525PG0WVQ1');
+</script>
   </head>
   <body>
     <h1><a href="/">고객상담센터</a></h1>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/3n8106brsg4" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
     ${list}
+
     ${control}
     ${body}
+    <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/5fb2cf971535bf152a568baa/default';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+
+
   </body>
   </html>
   `;
