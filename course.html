@@ -1,80 +1,205 @@
-<style>
-
-
-</style>
-
-<script>
-  function sizeUp() {
-
-  }
-</script>
-
+<!DOCTYPE html>
 <html>
-
-<head>
-  <!-- bootstrap 파일 불러오기 -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-</head>
-
-<body>
-
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="main">Logo</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="course">course</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="station">station</a>
-        </li>
-      </ul>
-
-      <ul class="nav navbar-nav navber-right">
-        <li class="nav-item">
-          <form class="form-inline my-2 my-lg-0" action="station">
-            <input class="form-control mr-sm-2" type="search" name="name" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-        </li>
-        <li class="nav-item">
-          <a style="margin-left: 10px;" class="nav-link" href="logout">로그아웃</a>
-        </li>
-        <li class="nav-item">
-          <a style="margin-left: 10px;" class="nav-link" href="logout">고객센터</a>
-        </li>
-      </ul>
-    </div>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>GoRail</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap-4.3.1.css" rel="stylesheet">
+    <style type="text/css">
+    </style>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <a class="navbar-brand" href="main">Logo</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="course">course</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="places">places</a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" href="station">station</a>
+            </li>
+              <li class="nav-item">
+                <a class="nav-link" href="map">map</a>
+              </li>
+          </ul>
+          
+          <ul class="nav navbar-nav navber-right">
+            <li class="nav-item">
+              <form class="form-inline my-2 my-lg-0" action="station">
+                <input class="form-control mr-sm-2" type="search" name="name" placeholder="Search" aria-label="Search">
+                <button class= "btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            </li>
+            <li class="nav-item">
+              <a style="margin-left: 10px;" class="nav-link" href="logout">로그아웃</a>
+            </li>
+          </ul>
+        </div>
   </nav>
-
-
-
-
-</body>
-
-<footer class="text-center">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <p>Copyright © MyWebsite. All rights reserved.</p>
+    <header>
+        <div class="container mt-3"><img class="d-block w-100" src="images/course_main.gif">
+          <div class="row">
+            <div class="col-12"><div class="carousel-caption d-none d-md-block text-light text-center">
+              <h5 class="text-center">Course</h5>
+              <p class="text-center">알찬 여행 테마 코스로 즐거운 추억을</p>
+            </div>
+			  </div></div></div>
+    </header>
+			
+    <section>
+      <div class="container">
+        <div class="row">
+          <div class="col-lg-12 mb-0 mt-3 text-left">
+            <h3><strong>검색하고 싶은 지역을 선택하세요!</strong></h3>
+          </div>
+			
+<!--열차 테마코스 선택할 수 있는 select box 부분-->						
+			  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			  <select class="form-control w-auto h-30" id="Train_Theme" name="Train_Theme">
+              <option value="">코스 선택</option>
+              <option value="전국">전국</option>
+              <option value="경북">경상북도</option>
+			  <option value="전라">전라도</option>
+			  <option value="식도락">식도락</option>
+			  <option value="여름바다">여름바다</option>
+			  <option value="힐링">힐링</option>
+			  </select>
+			   &nbsp;&nbsp;&nbsp;
+			  <select class="form-control w-auto h-30" id="Train_Type" name="Train_Type">
+				 
+				  <option value="">지역 선택</option>
+				 
+                  <option value="통영" class="전국">통영</option>
+				  <option value="부산" class="전국">부산</option>
+				  <option value="경주" class="전국">경주</option>
+				  <option value="단양" class="전국">단양</option>
+				  <option value="강릉" class="전국">강릉</option>
+				  
+				  <option value="부산" class="경북">부산</option>
+				  <option value="울산" class="경북">울산</option>
+				  <option value="포항" class="경북">포항</option>
+				  <option value="영덕" class="경북">영덕</option>
+				  <option value="울진" class="경북">울진</option>
+				  
+				  <option value="군산" class="전라">군산</option>
+				  <option value="전주" class="전라">전주</option>
+				  <option value="광주" class="전라">광주</option>
+				  <option value="순천" class="전라">순천</option>
+				  <option value="여수" class="전라">여수</option>
+				  
+				  <option value="전주" class="식도락">전주</option>
+				  <option value="순천" class="식도락">순천</option>
+				  <option value="여수" class="식도락">여수</option>
+				  <option value="부산" class="식도락">부산</option>
+				  <option value="대구" class="식도락">대구</option>
+				  <option value="안동" class="식도락">안동</option>
+				  
+				  <option value="강릉" class="여름바다">강릉</option>
+				  <option value="포항" class="여름바다">포항</option>
+				  <option value="부산" class="여름바다">부산</option>
+				  <option value="울산" class="여름바다">울산</option>
+				  
+				  <option value="경주" class="힐링">경주</option>
+				  <option value="안동" class="힐링">안동</option>
+				  <option value="단양" class="힐링">단양</option>
+				  <option value="영월" class="힐링">영월</option>
+                
+                
+	      </select>
+			  &nbsp; &nbsp;
+		  <button type="button" href="" class="btn btn-success w-auto h-20" data-toggle="modal" data-target="#exampleModalScrollable">Search</button>
+			
+			<!-- 팝업페이지 시작 부분-->
+<div class="modal fade" id="exampleModalScrollable" tabindex="-1" role="dialog" aria-labelledby="popup" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-scrollable modal-xl" role="document">
+	  <div class="modal-content">
+      <div class="modal-header">
+		  <h3 class="popup_title" id="exampleModalScrollableTitle"><b>제목 입력하세요</b></h3>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
       </div>
     </div>
   </div>
-</footer>
+	</div>
+			
+			
+            <!-- 팝업페이지 끝 부분-->			
+			
+        </div>
+      </div><hr>
+		
+		
+      <div class="container ">
+        <div class="row">
+          <div class="col-lg-4 col-md-6 col-sm-12 text-center col-xl-4">
+            <img class="img-fluid" alt="step1" style="width: 160px; height: 160px;" src="images/step1.png" data-holder-rendered="true">
+		    <h6><br></h6>
+		    <h4><strong>1. 코스, 지역 선택</strong></h4>
+		    <p>체험하고 싶은 코스와 지역을 선택하고<br>
+		      Search 버튼을 클릭하세요</p>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-12 text-center col-xl-4">
+            <img class="img-fluid" alt="step2" style="width: 160px; height: 160px;" src="images/step2.png" data-holder-rendered="true">
+            <h6><br></h6>
+            <h4><strong>2. 정보 조회</strong></h4>
+            <p>Search 버튼을 누르면 팝업 창으로 해당 지역의 <br>
+              관광지,
+              주변 시설, 추천 경로 등을 알려줍니다</p>
+          </div>
+          <div class="col-lg-4 col-md-6 col-sm-12 text-center col-xl-4">
+            <img class="img-fluid" alt="step3" style="width: 160px; height: 160px;" src="images/step3.png" data-holder-rendered="true">
+            <h6><br></h6>
+            <h4><strong>3. 즐기세요</strong></h4>
+            <p>각 코스별 지역을 검색한 것을 바탕으로<br>나만의 여행 계획을 세워보세요!</p>
+          </div>
+</div>
+        <div class="row"> </div>
+        <div class="row"> </div>
+      </div>
+</section>
+  
+    <footer class="text-center">
+		<hr>
+      <div class="container">
+        <div class="row">
+          <div class="col-12">
+            <p>Copyright © MyWebsite. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+		
+    </footer>
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) --> 
+    <script src="js/jquery-3.3.1.min.js"></script> 
+    <!-- Include all compiled plugins (below), or include individual files as needed --> 
+    <script src="js/popper.min.js"></script> 
+    <script src="js/bootstrap-4.3.1.js"></script>
+	  
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="js/jquery.chained.min.js"></script>
+    <script>
+      $(document).ready(function() {
+      $("#Train_Type").chained("#Train_Theme");
+        });
+
+    </script>  
+  </body>
 </html>
