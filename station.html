@@ -3,9 +3,77 @@
 <script>
   let map;
 
-  function initMap() {
+  var getParameters = function (paramName) {
+    // 리턴값을 위한 변수 선언
+    var returnValue;
+
+    // 현재 URL 가져오기
+    var url = location.href;
+
+    // get 파라미터 값을 가져올 수 있는 ? 를 기점으로 slice 한 후 split 으로 나눔
+    var parameters = (url.slice(url.indexOf('?') + 1, url.length)).split('&');
+
+    // 나누어진 값의 비교를 통해 paramName 으로 요청된 데이터의 값만 return
+    for (var i = 0; i < parameters.length; i++) {
+      var varName = parameters[i].split('=')[0];
+      if (varName.toUpperCase() == paramName.toUpperCase()) {
+        returnValue = parameters[i].split('=')[1];
+        return decodeURIComponent(returnValue);
+      }
+    }
+  };
+
+  function station(req, res) {
+
+    var name = getParameters('name');
+
+    if (name == "부산") {
+      return '35.11543560776758,129.04223226917358';
+    } else if (name == "통영") {
+      return '34.88518379783825,128.4169441180927';
+    } else if (name == "경주") {
+      return '35.84466079615989,129.21790345569565';
+    } else if (name == "단양") {
+      return '37.01916436494398,128.33858581421015';
+    } else if (name == "강릉") {
+      return '37.76401896414172,128.90163576922785';
+    } else if (name == "울산") {
+      return '35.55161428724902,129.13851672685396';
+    } else if (name == "포항") {
+      return '36.07196015278183,129.3419183538491';
+    } else if (name == "영덕") {
+      return '36.41103310776056,129.37728718454295';
+    } else if (name == "울진") {
+      return '36.98376867444184,129.3971215403755';
+    } else if (name == "군산") {
+      return '35.99947617825534,126.75978954035538';
+    } else if (name == "전주") {
+      return '35.850056958058765,127.16181945569575';
+    } else if (name == "광주") {
+      return '35.260286533439455,126.92534747510909';
+    } else if (name == "순천") {
+      return '34.94600883924083,127.50318489615485';
+    } else if (name == "광주") {
+      return '35.22582730698232,126.91483008425706';
+    } else if (name == "여수") {
+      return '34.75389006202851,127.74869419325849';
+    } else if (name == "대구") {
+      return '35.87625684854493,128.59600954035284';
+    } else if (name == "안동") {
+      return '36.56465859587872,128.73312024340967';
+    } else if (name == "영월") {
+      return '37.18266377085605,128.48073526921553';
+    }
+  }
+
+  function initMap(name) {
+    var latlng = station(name);
+
+    var lat = parseFloat(latlng.split(',')[0]);
+    var lng = parseFloat(latlng.split(',')[1]);
+
     map = new google.maps.Map(document.getElementById("map"), {
-      center: { lat: 37.631734, lng: 127.077614 },
+      center: { lat: lat, lng: lng },
       zoom: 16,
     });
   }
@@ -41,54 +109,10 @@
 
 
 
+
 <body>
-  <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="main">Logo</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav mr-auto">
-        <li class="nav-item">
-          <a class="nav-link" href="course">course</a>
-        </li>
-        <li class="nav-item active">
-          <a class="nav-link" href="station">station</a>
-        </li>
-      </ul>
-
-      <ul class="nav navbar-nav navber-right">
-        <li class="nav-item">
-          <form class="form-inline my-2 my-lg-0" action="station">
-            <input class="form-control mr-sm-2" type="search" name="name" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-          </form>
-        </li>
-        <li class="nav-item">
-          <a style="margin-left: 10px;" class="nav-link" href="logout">로그아웃</a>
-        </li>
-        <li class="nav-item">
-          <a style="margin-left: 10px;" class="nav-link" href="logout">고객센터</a>
-        </li>
-      </ul>
-    </div>
-  </nav>
-  
   <div id="map"></div>
-
-
 </body>
 
-<footer class="text-center">
-  <div class="container">
-    <div class="row">
-      <div class="col-12">
-        <p>Copyright © MyWebsite. All rights reserved.</p>
-      </div>
-    </div>
-  </div>
-</footer>
 
 </html>
