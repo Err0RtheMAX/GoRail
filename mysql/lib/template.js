@@ -70,7 +70,7 @@ module.exports = {
     <body>
       
       <header>
-        <h1><a href="/">고객상담센터</a></h1>
+       
       </header>
       <tr></tr>
       

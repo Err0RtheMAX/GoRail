@@ -179,7 +179,7 @@ var bbsapp = http.createServer(function(request,response){
         var html = template.HTML(title, list,
           `<h2>${title}</h2><h3>${description}</h3><h3>${video}</h3>`,
          // `<a href="/create">글 남기기</a>`,
-          `<button type="button" onclick="location.href='/create'">글 남기기</button>`
+          `<button id = bt type="button" onclick="location.href='/create'">글 남기기</button>`
 
         );
         response.writeHead(200);
@@ -199,12 +199,15 @@ var bbsapp = http.createServer(function(request,response){
         var list = template.list(topics);
         var html = template.HTML(title, list,
           `<h2>${title}</h2> <h3>${description}</h3>`,
-          ` <button type="button" onclick="location.href='/create'">글 남기기</button>
-              
-              <button type="button" onclick="location.href='/update?id=${queryData.id}'">글 수정하기</button>
-              <form action="delete_process" method="post">
-                <input type="hidden" name="id" value="${queryData.id}">
-                <div id = article> <input type="submit" value="글 삭제하기"> </div>
+
+         
+          ` <div style="margin-bottom:10px;"><button id = bt type="button" onclick="location.href='/create'">글 남기기</button></div>
+          <div style="margin-bottom:10px;">
+            <button id = bt type="button" onclick="location.href='/update?id=${queryData.id}'">글 수정하기</button><div>
+            <div style="margin-TOP:10px;">
+            <form action="delete_process" method="post">
+            <input type="hidden" name="id" value="${queryData.id}">
+                <div id = article> <input id=w type="submit" value="글 삭제하기"> </div>
               </form>`
         );
         response.writeHead(200);
@@ -219,16 +222,17 @@ var bbsapp = http.createServer(function(request,response){
       var html = template.HTML(title, list,
         `
         <form action="/create_process" method="post">
-          <p><input type="text" name="title" placeholder="title"></p>
+        <div style="margin-TOP:10px;">
+          <p><input type="text" name="title" style="text-align:center; width:800px; height:40px; letter-spacing: 0px" placeholder="제목을 적어주세요."></p> </div>
           <p>
-            <textarea name="description" placeholder="description"></textarea>
+            <textarea name="description" style="text-align:center; width:800px; height:290px; letter-spacing: 0px" placeholder="본문을 적어주세요."></textarea>
           </p>
           <p>
-            <input type="submit">
+            <input id = bt type="submit">
           </p>
         </form>
         `,
-        `<button type="button" onclick="location.href='/create'">글 남기기</button>`
+        `<button id = bt type="button" onclick="location.href='/create'">글 남기기</button>`
       );
       response.writeHead(200);
       response.end(html);
@@ -273,12 +277,12 @@ var bbsapp = http.createServer(function(request,response){
               <textarea name="description" placeholder="description">${topic[0].description}</textarea>
             </p>
             <p>
-              <input type="submit">
+              <input id = bt type="submit">
             </p>
           </form>
           `,
-          `<button type="button" onclick="location.href='/create'">글 남기기</button>
-           <button type="button" onclick="location.href='/update?id=${queryData.id}'">글 수정하기</button>`
+          `<button id = bt type="button" onclick="location.href='/create'">글 남기기</button>
+           <button id = bt type="button" onclick="location.href='/update?id=${queryData.id}'">글 수정하기</button>`
         );
         response.writeHead(200);
         response.end(html);
