@@ -1,5 +1,77 @@
 <html>
+  
+
+<head>
+
+  <!-- bootstrap 파일 불러오기 -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+    crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+    crossorigin="anonymous"></script>
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+  <script
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCawUvo6vhrdecSUeco460_j5BdXLbXirM&callback=initMap&libraries=&v=weekly"
+    defer></script>
+
 <script>
+    function getApi($mapX, $mapY) {
+
+      const $url = 'http://api.visitkorea.or.kr/openapi/service/rest/KorService/locationBasedList'
+
+const $KEY = 'Y%2Fp5JLBmrkILvFkISB3Yp282tJ9n4Syw7T6U7rK5JjokV53hvlumKQOVZW%2FK9tGdJtL4HUW6IB1%2Bmr59et%2B9sQ%3D%3D'
+// 미리 받은 인증 키
+const $numOfRows = '10'
+const $pageNo = '10'
+const $MobileOS = 'WIN'
+const $MobileApp = 'trainPortal'
+const $arrange = 'E'
+const $contentTypeId = '15'
+const $radius = '10000'
+const $listYN = 'Y'
+
+const  $api_url = $url + '?serviceKey=' + $KEY + 
+						'&numOfRows=' + $numOfRows + 
+						'&pageNo=' + $pageNo + 
+						'&MobileOS=' + $MobileOS + 
+						'&MobileApp=' + $MobileApp + 
+						'&arrange=' + $arrange + 
+						'&contentTypeId=' + $contentTypeId + 
+						'&radius=' + $radius + 
+						'&listYN=' + $listYN + 
+						'&mapX=' + $mapX + 
+						'&mapY=' + $mapY;
+
+            console.log($api_url);
+            
+            jQuery.ajax(
+              { url : $api_url,
+                dataType: "xml",
+                success: function(data) {
+                  var $items = $(data).find("items");
+                  
+                  $items.find("item").each(function() {
+
+                    var $addr1 = $(this).find("addr1").text();
+                    var $addr2 = $(this).find("addr2").text();
+
+                    console.log($addr1);
+                    console.log($addr2);
+
+
+
+                    document.getElementById("detail").innerHTML = $addr1;
+                  })
+                }
+
+              }
+            );
+  }
+
   let map;
 
   var getParameters = function (paramName) {
@@ -77,34 +149,15 @@
     });
   }
 
-  function eee() {
-    alert("1");
-  }
+  var latlng = station(name);
 
-  eee();
+    var lat = parseFloat(latlng.split(',')[0]);
+    var lng = parseFloat(latlng.split(',')[1]);
 
-
+  document.onload = getApi(lng,lat);
 
 </script>
-
-<head>
-  <!-- bootstrap 파일 불러오기 -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-    integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-    crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-    integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-    crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-    integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-    crossorigin="anonymous"></script>
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
-  <script
-    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCawUvo6vhrdecSUeco460_j5BdXLbXirM&callback=initMap&libraries=&v=weekly"
-    defer></script>
-
+  
   <meta charset="utf-8">
 
   <style type="text/css">
@@ -119,6 +172,7 @@
 
 
 <body>
+  <div id="detail"></div>
   <div id="map"></div>
 </body>
 
