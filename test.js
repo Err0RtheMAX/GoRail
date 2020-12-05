@@ -362,7 +362,7 @@ var bbsapp = http.createServer(function (request, response) {
       <div class="jumbotron">
         <form class="form-signin" action="join_process" method="POST">
           <h1 class="h3 mb-3 font-weight-normal">${title}</h1>
-          <input type="text" id="username" name="id" class="form-control" placeholder="아이다" required=""
+          <input type="text" id="username" name="id" class="form-control" placeholder="아이디" required=""
             autofocus="">
           <input type="password" id="password1" name="password1" class="form-control" placeholder="비밀번호" required="">
           <input type="password" id="password2" name="password2" class="form-control" placeholder="비밀번호 확인" required="">
@@ -395,7 +395,6 @@ var bbsapp = http.createServer(function (request, response) {
       var post = qs.parse(body);
 
       db.query(`SELECT * FROM user WHERE id=?`, [post.id], function (error2, user) {
-        console.log(user.length);
         if (error2 || user.length == 0) {
           response.writeHead(302, { Location: `/login` });
           response.end();
@@ -445,13 +444,11 @@ var bbsapp = http.createServer(function (request, response) {
       }
 
       db.query(`SELECT * FROM user WHERE id=?`, [post.id], function (error2, user) {
-        if (error2 || user[0].id != null) {
+        if (error2 || user.length != 0) {
           response.writeHead(302, { Location: `/join` });
           response.end();
-        }
-      });
-
-      db.query(`
+        } else {
+          db.query(`
           INSERT INTO user (id, password, created) 
             VALUES(?, ?, NOW())`,
         [post.id, post.password1],
@@ -465,6 +462,8 @@ var bbsapp = http.createServer(function (request, response) {
           response.end();
         }
       )
+        }
+      });
     });
   } else {
     response.writeHead(404);
