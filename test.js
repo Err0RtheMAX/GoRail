@@ -395,9 +395,11 @@ var bbsapp = http.createServer(function (request, response) {
       var post = qs.parse(body);
 
       db.query(`SELECT * FROM user WHERE id=?`, [post.id], function (error2, user) {
+        console.log(user.length);
         if (error2 || user.length == 0) {
           response.writeHead(302, { Location: `/login` });
-        }
+          response.end();
+        } else {
 
         var id = user[0].id;
         var password = user[0].password;
@@ -415,6 +417,7 @@ var bbsapp = http.createServer(function (request, response) {
           response.end();
 
         }
+      }
 
       }
       )
@@ -422,6 +425,7 @@ var bbsapp = http.createServer(function (request, response) {
   } else if (pathname === '/logout') {
     session.loggedin = false;
     response.writeHead(302, { Location: `http://localhost:3000/main` });
+    response.end();
   }
 
 
@@ -436,12 +440,14 @@ var bbsapp = http.createServer(function (request, response) {
 
       if (post.password1 != post.password2) {
         response.writeHead(302, { Location: `/join` });
+        response.end();
         return;
       }
 
       db.query(`SELECT * FROM user WHERE id=?`, [post.id], function (error2, user) {
         if (error2 || user[0].id != null) {
           response.writeHead(302, { Location: `/join` });
+          response.end();
         }
       });
 
@@ -452,6 +458,8 @@ var bbsapp = http.createServer(function (request, response) {
         function (error, result) {
           if (error) {
             response.writeHead(302, { Location: `/join` });
+            response.end();
+
           }
           response.writeHead(302, { Location: `/login` });
           response.end();
