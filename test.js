@@ -277,9 +277,9 @@ var bbsapp = http.createServer(function (request, response) {
           `
           <form action="/update_process" method="post">
             <input type="hidden" name="id" value="${topic[0].id}">
-            <p><input type="text" name="title" placeholder="title" value="${topic[0].title}" required=""></p>
+            <p><input type="text" name="title" style="text-align:center; width:800px; height:40px; letter-spacing: 0px" placeholder="제목을 적어주세요." value="${topic[0].title}"></p>
             <p>
-              <textarea name="description" placeholder="description" required="">${topic[0].description}</textarea>
+              <textarea name="description" style="text-align:center; width:800px; height:290px; letter-spacing: 0px" placeholder="본문을 적어주세요.">${topic[0].description}</textarea>
             </p>
             <p>
               <input id = bt type="submit">
