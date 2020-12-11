@@ -138,6 +138,10 @@ app.use('/', function (request, response, next) {
   }
 });
 
+app.get('', function (request, response) {
+  response.sendFile(path.join(__dirname + '/main.html'));
+});
+
 app.get('/main', function (request, response) {
   response.sendFile(path.join(__dirname + '/main.html'));
 });
